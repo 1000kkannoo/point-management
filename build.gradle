@@ -20,27 +20,37 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
+
 	// spring batch
 	implementation 'org.springframework.boot:spring-boot-starter-batch'
+
 	// jpa
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	compileOnly 'org.projectlombok:lombok'
+
 	// database
 	runtimeOnly 'mysql:mysql-connector-java'
 	testRuntimeOnly 'com.h2database:h2'
+
 	// lombok
 	annotationProcessor 'org.projectlombok:lombok'
+
 	// junit
 	testImplementation 'org.junit.jupiter:junit-jupiter-api'
 	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+
 	// spring test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.batch:spring-batch-test'
 
+	//assertj
+	testImplementation 'org.assertj:assertj-core'
+
 	// querydsl
 	implementation 'com.querydsl:querydsl-jpa'
 	implementation 'com.querydsl:querydsl-core'
+
 	// querydsl이 compile 할때 추가적으로 진행하는 행위
 	annotationProcessor 'com.querydsl:querydsl-apt'
 	annotationProcessor group: 'com.querydsl', name: 'querydsl-apt', classifier:'jpa'

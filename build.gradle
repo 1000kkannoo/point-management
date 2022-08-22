@@ -1,0 +1,55 @@
+plugins {
+	id 'org.springframework.boot' version '2.5.4' // 스프링 프레임워크 부트 버전 설정
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE' // 의존성 버전 설정
+	id 'java'
+}
+
+group = 'my'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral() // 이곳에서 의존성들을 가져와 설치 됨
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	// spring batch
+	implementation 'org.springframework.boot:spring-boot-starter-batch'
+	// jpa
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	compileOnly 'org.projectlombok:lombok'
+	// database
+	runtimeOnly 'mysql:mysql-connector-java'
+	testRuntimeOnly 'com.h2database:h2'
+	// lombok
+	annotationProcessor 'org.projectlombok:lombok'
+	// junit
+	testImplementation 'org.junit.jupiter:junit-jupiter-api'
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+	// spring test
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.batch:spring-batch-test'
+
+	// querydsl
+	implementation 'com.querydsl:querydsl-jpa'
+	implementation 'com.querydsl:querydsl-core'
+	// querydsl이 compile 할때 추가적으로 진행하는 행위
+	annotationProcessor 'com.querydsl:querydsl-apt'
+	annotationProcessor group: 'com.querydsl', name: 'querydsl-apt', classifier:'jpa'
+	annotationProcessor 'jakarta.persistence:jakarta.persistence-api'
+	annotationProcessor 'jakarta.annotation:jakarta.annotation-api'
+
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
